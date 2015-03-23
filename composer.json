@@ -1,0 +1,12 @@
+{
+    "name": "jaggy/kraken",
+    "description": "A file release manager.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jaggy Gauran",
+            "email": "jaggygauran@gmail.com"
+        }
+    ],
+    "require": {}
+}
