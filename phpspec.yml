@@ -1,0 +1,4 @@
+suites:
+    main:
+        src_path: src
+        spec_prefix: spec

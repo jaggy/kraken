@@ -9,9 +9,16 @@
         }
     ],
     "require": {
-        "symfony/console": "~2.6"
+        "symfony/console": "~2.6",
+        "symfony/filesystem": "~2.6",
+        "sebastian/git": "~2.0"
     },
     "require-dev": {
         "phpspec/phpspec": "~2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
     }
 }
