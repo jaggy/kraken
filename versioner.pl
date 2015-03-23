@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+use strict;
+use warnings;
 
 # Get the version type. (major, minor, patch)
 my $type = $ARGV[0];
@@ -14,7 +16,7 @@ my $status = `git status`;
 my @files  = ($status =~ m/modified:\s+(.+)/g);
 
 # Loop through the files.
-foreach $file (@files) {
+foreach my $file (@files) {
 
     # Open the file
     open my $handle, '<', $file;
@@ -26,16 +28,21 @@ foreach $file (@files) {
 
     # Update the file depending on the version type.
     my @digits = split /\./, $version;
-    @digits[$index]++;
+    $digits[$index]++;
 
     if ($type eq 'major') {
-        @digits[1] = 0;
-        @digits[2] = 0;
+        $digits[1] = 0;
+        $digits[2] = 0;
     } elsif ($type eq 'minor') {
-        @digits[2] = 0;
+        $digits[2] = 0;
     }
 
     my $update = join '.', @digits;
 
     # Do a find an replace on the file.
+    $content =~ s/Release: $version/Release: $update/g;
+
+    open $handle, '>', $file;
+    print $handle $content;
+    close $handle;
 }
