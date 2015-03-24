@@ -1,8 +1,14 @@
 <?php
 namespace Jaggy\Kraken\Vcs;
 
+use Jaggy\Kraken\Shell;
+
 /**
  * Git wrapper.
+ *
+ * @property    \Jaggy\Kraken\Shell  shell
+ *
+ * @uses        \Jaggy\Kraken\Shell
  *
  * @package     Jaggy\Kraken\Vcs
  * @author      Jaggy Gauran <jaggygauran@gmail.com>
@@ -14,13 +20,22 @@ namespace Jaggy\Kraken\Vcs;
 class Git implements VcsInterface
 {
     /**
+     * Shell instance.
+     *
+     * @type Shell
+     */
+    protected $shell;
+
+
+    /**
      * Create a git instance.
      *
-     * @param  string  $repository
+     * @param  Shell  $shell
      * @return Git
      */
-    public function __construct($repository)
+    public function __construct(Shell $shell)
     {
+        $this->shell = $shell;
     }
 
     /**
