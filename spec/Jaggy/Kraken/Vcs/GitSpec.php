@@ -40,12 +40,12 @@ class GitSpec extends ObjectBehavior
 
 
     /**
-     * it returns all the modified files
+     * it returns all the modified php files
      *
      * @test
      * @return void
      */
-    public function it_returns_all_the_modified_files(Shell $shell)
+    public function it_returns_all_the_modified_php_files(Shell $shell)
     {
         $mock    = file_get_contents('spec/support/git.mock');
         $command = Argument::exact('git status');
@@ -53,7 +53,6 @@ class GitSpec extends ObjectBehavior
         $shell->execute($command)->willReturn($mock);
 
         $files = [
-            '.gitignore',
             'spec/Jaggy/Kraken/KrakenSpec.php',
             'src/Jaggy/Kraken/Kraken.php'
         ];

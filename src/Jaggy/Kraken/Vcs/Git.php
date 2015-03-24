@@ -48,7 +48,7 @@ class Git implements VcsInterface
         $status = $this->shell->execute('git status');
 
         $matches = [];
-        $pattern = '/\s+modified:\s+(?<files>.+)/';
+        $pattern = '/\s+modified:\s+(?<files>.+\.php)/';
 
         preg_match_all($pattern, $status, $matches, PREG_PATTERN_ORDER);
 
