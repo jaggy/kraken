@@ -1,3 +1,6 @@
+# 0.1.3
+- Made a mistake on autoloading... again.
+
 # 0.1.2
 - Fix autoload issues.
 
