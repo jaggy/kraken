@@ -1,14 +1,14 @@
 <?php
 namespace Jaggy\Kraken;
 
-use SebastianBergmann\Git\Git;
+use Jaggy\Kraken\Vcs\VcsInterface;
 
 /**
  * The file release manager class.
  *
- * @property    Git  git
+ * @property    VcsInterface  vcs
  *
- * @uses        \SebastianBergmann\Git\Git
+ * @uses        \Jaggy\Kraken\Vcs\VcsInterface
  *
  * @package     Jaggy\Kraken
  * @author      Jaggy Gauran <jaggygauran@gmail.com>
@@ -20,21 +20,21 @@ use SebastianBergmann\Git\Git;
 class Kraken
 {
     /**
-     * Git wrapper instance.
+     * VCS wrapper instance.
      *
-     * @type Git
+     * @type VcsInterface
      */
-    protected $git;
+    protected $vcs;
 
 
     /**
      * Create a Kraken instance.
      *
-     * @param  Git  $git
+     * @param  VcsInterface  $vcs
      * @return Kraken
      */
-    public function __construct(Git $git)
+    public function __construct(VcsInterface $vcs)
     {
-        $this->git = $git;
+        $this->vcs = $vcs;
     }
 }

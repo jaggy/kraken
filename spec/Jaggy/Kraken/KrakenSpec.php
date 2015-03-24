@@ -4,7 +4,7 @@ namespace spec\Jaggy\Kraken;
 
 use Prophecy\Argument;
 use PhpSpec\ObjectBehavior;
-use SebastianBergmann\Git\Git;
+use Jaggy\Kraken\Vcs\VcsInterface;
 
 /**
  * Kraken specification.
@@ -24,9 +24,9 @@ class KrakenSpec extends ObjectBehavior
      * @access public
      * @return void
      */
-    public function let(Git $git)
+    public function let(VcsInterface $vcs)
     {
-        $this->beConstructedWith($git);
+        $this->beConstructedWith($vcs);
     }
 
 
@@ -40,23 +40,5 @@ class KrakenSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType('Jaggy\Kraken\Kraken');
-    }
-
-
-    /**
-     * it returns all the files to be versioned
-     *
-     * @test
-     * @access public
-     * @return void
-     */
-    public function it_returns_all_the_files_to_be_versioned()
-    {
-        $modified = [
-            'spec/Jaggy/Kraken/KrakenSpec.php',
-            'src/Jaggy/Kraken/Kraken.php'
-        ];
-
-        //$this->getFiles()->shouldReturn($modified);
     }
 }
