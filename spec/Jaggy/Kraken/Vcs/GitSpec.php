@@ -47,7 +47,7 @@ class GitSpec extends ObjectBehavior
      */
     public function it_returns_all_the_modified_files(Shell $shell)
     {
-        $mock    = file_get_contents(__DIR__ . '/git.mock');
+        $mock    = file_get_contents('spec/support/git.mock');
         $command = Argument::exact('git status');
 
         $shell->execute($command)->willReturn($mock);
