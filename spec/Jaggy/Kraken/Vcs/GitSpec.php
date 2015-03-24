@@ -4,6 +4,8 @@ namespace spec\Jaggy\Kraken\Vcs;
 use Jaggy\Kraken\Shell;
 use Prophecy\Argument;
 use PhpSpec\ObjectBehavior;
+use org\bovigo\vfs\VfsStream;
+use org\bovigo\vfs\VfsStreamWrapper;
 
 /**
  * Git wrapper specification.
@@ -25,6 +27,14 @@ class GitSpec extends ObjectBehavior
     public function let(Shell $shell)
     {
         $this->beConstructedWith($shell);
+
+        $class = file_get_contents('spec/support/User.php.mock');
+        $spec  = file_get_contents('spec/support/UserTest.php.mock');
+
+        $structure = [
+            'User.php' => $class,
+            'UserTest.php' => $spec
+        ];
     }
 
     /**
@@ -53,8 +63,8 @@ class GitSpec extends ObjectBehavior
         $shell->execute($command)->willReturn($mock);
 
         $files = [
-            'spec/Jaggy/Kraken/KrakenSpec.php',
-            'src/Jaggy/Kraken/Kraken.php'
+            'UserTest.php',
+            'User.php'
         ];
 
         $this->modified()->shouldReturn($files);
