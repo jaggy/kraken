@@ -1,8 +1,14 @@
 <?php
 namespace Jaggy\Kraken;
 
+use SebastianBergmann\Git\Git;
+
 /**
  * The file release manager class.
+ *
+ * @property    Git  git
+ *
+ * @uses        \SebastianBergmann\Git\Git
  *
  * @package     Jaggy\Kraken
  * @author      Jaggy Gauran <jaggygauran@gmail.com>
@@ -13,4 +19,22 @@ namespace Jaggy\Kraken;
  */
 class Kraken
 {
+    /**
+     * Git wrapper instance.
+     *
+     * @type Git
+     */
+    protected $git;
+
+
+    /**
+     * Create a Kraken instance.
+     *
+     * @param  Git  $git
+     * @return Kraken
+     */
+    public function __construct(Git $git)
+    {
+        $this->git = $git;
+    }
 }
