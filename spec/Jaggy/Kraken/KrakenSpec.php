@@ -41,4 +41,31 @@ class KrakenSpec extends ObjectBehavior
     {
         $this->shouldHaveType('Jaggy\Kraken\Kraken');
     }
+
+
+    /**
+     * it updates the version annotations of the modified files
+     *
+     * @test
+     * @return void
+     */
+    public function it_updates_the_version_annotations_of_the_modified_files()
+    {
+        $this->patch()->bump('spec/support/User.php.mock')->shouldContain('0.1.1');
+    }
+
+
+    /**
+     * Custom matchers.
+     *
+     * @return array
+     */
+    public function getMatchers()
+    {
+        return [
+            'contain' => function ($subject, $string) {
+                return (strpos($subject, $string) !== false);
+            }
+        ];
+    }
 }

@@ -44,6 +44,18 @@ class Shell
 
 
     /**
+     * Set the path.
+     *
+     * @param  string  $path
+     * @return void
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    }
+
+
+    /**
      * Execute a CLI command.
      *
      * @param  string  $command

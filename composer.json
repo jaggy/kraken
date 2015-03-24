@@ -9,12 +9,10 @@
         }
     ],
     "require": {
-        "symfony/console": "~2.6",
-        "symfony/filesystem": "~2.6"
+        "symfony/console": "~2.6"
     },
     "require-dev": {
-        "phpspec/phpspec": "~2.1",
-        "mikey179/vfsStream": "dev-master"
+        "phpspec/phpspec": "~2.1"
     },
     "autoload": {
         "psr-4": {
