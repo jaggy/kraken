@@ -1,4 +1,5 @@
-# Versioner
+# Kraken
+The lazy file versioner.
 
 This is a, for now, PHP DocBlock version updater.
 
@@ -20,10 +21,6 @@ Since most of us tend to miss some here and now.
 
 ## Installation and Usage
 
-To install just alias the script.
-
-    alias uv='perl /path/to/versioner/versioner.pl';
-
 Take note, using this will update all your _modified_ files and update their version annotation
 
-    uv [major, minor, patch]
+    kraken release [major, minor, patch]
