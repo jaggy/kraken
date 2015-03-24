@@ -78,6 +78,6 @@ class Shell
         }
 
         // Return the output.
-        return $output;
+        return implode("\n", $output);
     }
 }
