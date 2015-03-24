@@ -1,3 +1,6 @@
+# 0.1.2
+- Fix autoload issues.
+
 # 0.1.1
 - Let composer read the binary.
 
