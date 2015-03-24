@@ -1,6 +1,7 @@
 <?php
 namespace spec\Jaggy\Kraken\Vcs;
 
+use Jaggy\Kraken\Shell;
 use Prophecy\Argument;
 use PhpSpec\ObjectBehavior;
 
@@ -21,9 +22,9 @@ class GitSpec extends ObjectBehavior
      *
      * @return void
      */
-    public function let()
+    public function let(Shell $shell)
     {
-        $this->beConstructedWith(__DIR__);
+        $this->beConstructedWith($shell);
     }
 
     /**
@@ -35,5 +36,28 @@ class GitSpec extends ObjectBehavior
     {
         $this->shouldHaveType('Jaggy\Kraken\Vcs\Git');
         $this->shouldHaveType('Jaggy\Kraken\Vcs\VcsInterface');
+    }
+
+
+    /**
+     * it returns all the modified files
+     *
+     * @test
+     * @return void
+     */
+    public function it_returns_all_the_modified_files(Shell $shell)
+    {
+        $mock    = file_get_contents(__DIR__ . '/git.mock');
+        $command = Argument::exact('git status');
+
+        $shell->execute($command)->willReturn($mock);
+
+        $files = [
+            '.gitignore',
+            'spec/Jaggy/Kraken/KrakenSpec.php',
+            'src/Jaggy/Kraken/Kraken.php'
+        ];
+
+        $this->modified()->shouldReturn($files);
     }
 }
