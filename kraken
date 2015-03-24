@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+
+<?php
+
+use Jaggy\Kraken\Shell;
+use Jaggy\Kraken\Vcs\Git;
+use Jaggy\Kraken\Kraken;
+
+$shell  = new Shell;
+$git    = new Git($shell);
+$kraken = new Kraken($git);
+

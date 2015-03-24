@@ -61,6 +61,49 @@ class Kraken
 
 
     /**
+     * Patch revision.
+     *
+     * @return Kraken
+     */
+    public function minor()
+    {
+        $this->revision = 'minor';
+
+        return $this;
+    }
+
+
+    /**
+     * Patch revision.
+     *
+     * @return Kraken
+     */
+    public function major()
+    {
+        $this->revision = 'major';
+
+        return $this;
+    }
+
+
+    /**
+     * Update all the files.
+     *
+     * @return void
+     */
+    public function update()
+    {
+        $files = $this->vcs->modified();
+
+        foreach ($files as $file) {
+            $bump = $this->bump($file);
+
+            file_put_contents($file, $bump);
+        }
+    }
+
+
+    /**
      * Bump the version number.
      *
      * @param  string  $file
