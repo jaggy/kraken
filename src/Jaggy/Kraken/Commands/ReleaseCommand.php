@@ -15,7 +15,7 @@ use Symfony\Component\Console\Formatter\OutputFormatterStyle;
  * @package     Jaggy\Kraken\Release
  * @author      Jaggy Gauran <jaggygauran@gmail.com>
  * @license     http://opensource.org/licenses/MIT The MIT License (MIT)
- * @version     Release: 0.1.0
+ * @version     Release: 0.1.1
  * @link        http://github.com/jaggy/kraken
  * @since       Class available since Release 0.1.0
  */
@@ -51,11 +51,15 @@ class ReleaseCommand extends Command
     /**
      * Execute the command.
      *
-     * @return <`5:void`>
+     * @return void
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $type = $input->getArgument('type');
+
+        if (! in_array($type, ['major', 'minor', 'patch'])) {
+            throw new \InvalidArgumentException('Invalid argument supplied: [major, minor, patch]');
+        }
 
         $kraken = call_user_func_array([$this->kraken, $type], []);
         $kraken->update();
