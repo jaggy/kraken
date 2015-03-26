@@ -1,3 +1,7 @@
+# 0.1.4
+- Fix autoloading for development.
+- Add prompts to show the files that were bumped.
+
 # 0.1.3
 - Made a mistake on autoloading... again.
 
