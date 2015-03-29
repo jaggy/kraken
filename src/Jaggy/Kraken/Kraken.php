@@ -98,6 +98,10 @@ class Kraken
         foreach ($files as $file) {
             $bump = $this->bump($file);
 
+            if (! $bump) {
+                continue;
+            }
+
             file_put_contents($file, $bump);
         }
     }
@@ -118,6 +122,12 @@ class Kraken
 
         // Look for the file version
         preg_match($pattern, $content, $matches);
+
+        if (! array_key_exists('version', $matches)) {
+            echo "{$file} has no annotation.\n";
+            return false;
+        }
+
 
         // Bump the version up.
         $version = $this->updateVersion($matches['version']);

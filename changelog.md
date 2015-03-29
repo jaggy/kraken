@@ -1,3 +1,6 @@
+# 0.1.5
+- Add an exception protection when no annotation is found.
+
 # 0.1.4
 - Fix autoloading for development.
 - Add prompts to show the files that were bumped.
